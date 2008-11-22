@@ -1,0 +1,31 @@
+ ------
+GWT Maven Plugin Introduction
+ ------
+ ------
+ ------
+
+Introduction
+
+  This maven plugin is dedicated to the Google Web Toolkit integration in maven.
+
+  It's primary goal is to run the GWT SDK tools from maven, and also to mimic the GWT
+  integration with Eclipse IDE.
+
+  It's secondary goal is to use maven dependency management to avoid installation of
+  the GWT SDK on the developper platform. Importing a GWT-based application as maven
+  project then requires no setup on the developer computer.
+
+  GWT Maven Plugin supports :
+
+  * GWT compiler execution,
+
+  * creating Eclipse launch configuration to start the project module(s) in GWT hosted mode,
+
+  * creating Eclipse launch configuration to run GWTTestCase-based unit tests in eclipse,
+
+  * running tests based on GWTTestCase framework
+
+  * code generation for GWT-RPC Async interface from synchronous server-side interfaces.
+
+  * code generation for GWT internalionalization ("i18n")
+
