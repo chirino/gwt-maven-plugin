@@ -66,7 +66,7 @@ public class ArtifactNameUtil
      *
      * @return
      */
-    public static final String guessDevJarName()
+    public static final String guessGWT1DevJarName()
     {
         if ( Os.isFamily( Os.FAMILY_WINDOWS ) )
         {
@@ -80,5 +80,15 @@ public class ArtifactNameUtil
         {
             return "gwt-dev-linux.jar";
         }
+    }
+    
+    /**
+     * Guess dev jar name based on platform.
+     *
+     * @return
+     */
+    public static final String guessGWT2DevJarName()
+    {
+        return "gwt-dev.jar";
     }
 }

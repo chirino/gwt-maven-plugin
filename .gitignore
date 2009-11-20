@@ -1,0 +1,8 @@
+.classpath
+.project
+.settings/
+src/it/gwt2.0-compile/gwt-2.0.0-rc1/
+src/it/gwt2.0-compile/src/main/webapp/com.google.gwt.sample.hello.Hello/
+src/it/gwt2.0-compile/src/main/webapp/hello/
+src/it/gwt2.0-compile/target/
+target/

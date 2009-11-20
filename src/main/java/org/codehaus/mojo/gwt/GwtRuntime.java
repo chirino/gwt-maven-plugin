@@ -64,11 +64,17 @@ public class GwtRuntime
         {
             throw new MojoExecutionException( "Invalid GWT home : " + gwtHome );
         }
-        this.gwtDevJar = new File( gwtHome, ArtifactNameUtil.guessDevJarName() );
-        if ( !gwtDevJar.exists() )
+        File jar = new File( gwtHome, ArtifactNameUtil.guessGWT1DevJarName() );
+        if ( !jar.exists() )
         {
-            throw new MojoExecutionException( "Invalid GWT home : " + gwtHome );
+            jar = new File( gwtHome, ArtifactNameUtil.guessGWT2DevJarName() );
+            if ( !jar.exists() )
+            {
+                throw new MojoExecutionException( "Invalid GWT home : " + gwtHome );
+            }
         }
+        gwtDevJar = jar;
+        
         this.version = GwtVersion.fromMavenVersion( readGwtDevVersion( gwtDevJar ) );
         if ( version.compareTo( GwtVersion.TWO_DOT_ZERO ) >= 0 )
         {
