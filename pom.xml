@@ -17,7 +17,7 @@
     <version>22</version>
   </parent>
   <artifactId>gwt-maven-plugin</artifactId>
-  <version>1.2-SNAPSHOT</version>
+  <version>1.2-chirino-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
   <name>Maven GWT Plugin</name>
   <description>
@@ -92,10 +92,24 @@
     </mailingList>
   </mailingLists>
   <scm>
-    <connection>scm:svn:http://svn.codehaus.org/mojo/trunk/mojo/gwt-maven-plugin</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/trunk/mojo/gwt-maven-plugin</developerConnection>
-    <url>http://fisheye.codehaus.org/browse/mojo/trunk/mojo/gwt-maven-plugin</url>
+    <connection>scm:git:git://github.com/chirino/gwt-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/chirino/gwt-maven-plugin.git</developerConnection>
+    <url>http://github.com/chirino/gwt-maven-plugin</url>
   </scm>
+  <distributionManagement>
+    <repository>
+      <id>hiramchirino.com-release</id>
+      <name>hiramchirino.com-release</name>
+      <url>scpexe://hiramchirino.com/home3/chirinow/public_html/hiramchirino.com/repo/release</url>
+      <uniqueVersion>false</uniqueVersion>
+    </repository>
+    <snapshotRepository>
+      <id>hiramchirino.com-snapshot</id>
+      <name>hiramchirino.com-snapshot</name>
+      <url>scpexe://hiramchirino.com/home3/chirinow/public_html/hiramchirino.com/repo/snapshot</url>
+      <uniqueVersion>false</uniqueVersion>
+    </snapshotRepository>
+  </distributionManagement>    
   <issueManagement>
     <system>jira</system>
     <url>http://jira.codehaus.org/browse/MGWT</url>
@@ -289,6 +303,14 @@
   </profiles>
 
   <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-webdav-jackrabbit</artifactId>
+        <version>1.0-beta-5</version>
+      </extension>
+    </extensions>
+    
     <resources>
       <resource>
         <directory>src/main/resources</directory>
@@ -355,6 +377,19 @@
             <stagingSiteURL>dav:https://dav.codehaus.org/mojo/${project.artifactId}-${project.version}</stagingSiteURL>
           </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-plugin</artifactId>
+        <dependencies>
+          <dependency>
+            <groupId>org.apache.maven.scm</groupId>
+            <artifactId>maven-scm-provider-gitexe</artifactId>
+            <version>1.2</version>
+          </dependency>
+        </dependencies>
+      </plugin>      
+      
     </plugins>
   </build>
 
